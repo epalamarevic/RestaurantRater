@@ -1,0 +1,47 @@
+﻿@model  ResturantRater.Models.Restaurant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) //create a new form tag:whatever is in this {} tag is what it will form-
+{
+    @Html.AntiForgeryToken() // in the view we will pass this antiforgerytoken need to be validated-so nothing outside resources can be used.
+
+    <div class="form-horizontal">
+        <h4>New Restaurant</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" } )
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(Model => Model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+                </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(Model => Model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+                </div>
+                </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit Rating" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+      
+}
